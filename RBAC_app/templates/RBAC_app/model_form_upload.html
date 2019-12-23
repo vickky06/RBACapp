@@ -1,0 +1,11 @@
+{% block content %}
+{{username}}
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Upload</button>
+  </form>
+
+<li><a href = "{% url 'userEntry' username%}" class="list-group-item  
+            list-group-item-action">goto Home</a></li>
+{% endblock %}

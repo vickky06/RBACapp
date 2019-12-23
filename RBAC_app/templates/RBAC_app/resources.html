@@ -1,0 +1,71 @@
+{% load bootstrap %}
+<html>
+<head>  
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> 
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>  
+</head>
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+body.ex1 {
+  margin-left: 30px;
+}
+</style>
+<body class="ex1">
+Search page
+
+<form method = "Post" action = "">
+{% csrf_token %}
+<table>
+{{form}}
+</table>
+<input class = "btn btn-primary" type = "submit" value = "Search"/>
+
+</form>
+
+
+{% if  queryset %}
+        
+<table>
+  <tr>
+    <th>Claims </th>
+    <th>Description </th>
+    <th>Date</th>
+    <th>Assignee</th>
+    <th>URL</th>
+    
+  </tr>
+  
+  {% for data in queryset%}
+  <tr>
+    <td>{{data.claims}}</td>
+    <td>{{data.description}}</td>
+    <td>{{data.addDate}}</td>
+    <td>{{data.assigne}}</td>
+    <td>{{data.document.url}}</td>
+    {% endfor%}
+  </tr>
+</table>
+
+{% else %}
+no query
+{% endif %}
+<br>
+<br>
+<div>
+<a href = "" class="btn btn-primary">Proximity Search</a>
+<h4>Functionality is not yet working</h4>
+<h4>Model Upload available in Admin
+
+</h4>
+</div>
+<br>
+</p>
+</body>
+</html>
+
+
+

@@ -1,0 +1,26 @@
+{{username}} is Here
+<h1>Functionality is not yest workin</h1>
+
+
+<form method = "Post" action = "">
+{% csrf_token %}
+
+{{form}}
+<input class = "btn btn-primary" type = "submit" value = "Search"/>
+</form>
+
+
+
+{% if  queryset %}
+{%for data in queryset%}
+    <li>{{data.claims}}
+    {{data.description}}
+    {{data.addDate}}
+    </li><br>
+        
+{%endfor%}
+{{queryset.description}}
+{% else %}
+no query
+
+{% endif %}

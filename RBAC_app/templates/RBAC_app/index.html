@@ -1,0 +1,53 @@
+<html> 
+<head>  
+
+    <title>List Groups example</title>                                                                                                                                          
+      
+    <!-- Add Bootstrap Links -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> 
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>  
+</head> 
+<body class = "bg-info">
+
+{%if all_users %}
+<br>
+<div class="container ">
+<div class="row">
+<div class="col-10">
+
+<h3 class = "page-header">Here are all the users</h3> <p id="demo"></p>
+</div>
+<div class="col-2">
+<input type="button" class="btn btn-success" value="Go to Admin"   onclick="myFunction()";> 
+</div>
+</div>
+
+
+<ul class="list-group">
+{%for users in all_users%}
+    <li><a href = "{% url 'userEntry' users.username%}" class="list-group-item  
+            list-group-item-action">{{users.username}}</a></li>
+        
+{%endfor%}
+
+
+</body>
+</ul>
+{%else%}
+<h3>Here are no users, ask admin to add you as user!!</h3>
+<input type="button" class="btn btn-success" value="Go to Admin"   onclick="myFunction()";> 
+{%endif%}
+</div>
+</html>
+
+
+<script>
+function myFunction() {
+  var url= document.links[0].hostname+'/admin';
+document.write("Redirecting to the url in 3 seconds..."); 
+    setTimeout(function(){window.location = url;}, 3000); 
+  
+
+}
+</script>
